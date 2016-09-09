@@ -33,7 +33,7 @@ float area(float r){
 }
 
 /**
-* Gets user input and then prints output
+* Gets user input, runs functions, and then prints output
 */
 int main(void){
 

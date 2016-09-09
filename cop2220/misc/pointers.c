@@ -27,5 +27,13 @@ int main(void){
   swap(ip, yp);
   printf("the value of x: %d\nthe value of y: %d\nthe value of ip: %d\n the value of yp: %d\n", x, y, *ip, *yp);
 
+  /* Messing w/ pointers and arrays */
+  int *o, f;
+  int pa[10];
+  o = &pa[0]; // assigns beginning of array to pointer
+  pa[3] = 4;
+  f = *(o+3);
+  printf("the value of pa[3]: %d\n", f); // should be 4
+
   return 0;
 }
