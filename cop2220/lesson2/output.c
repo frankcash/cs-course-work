@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdlib.h> // allows use of rand()
+#include <string.h> // enables use of Strings
+#include <time.h> // enables use of time()
 
 /**
 * Defining Variables
@@ -92,6 +93,40 @@ int lessonTen(void){
   printf("String is: %s\n", foo);
   strcpy(bar, foo); // In c you can not assign one string to another, must use strcpy from string.h
   printf("Bar is: %s\n", bar);
+  return 0;
+}
+
+/**
+* Numeric data types
+*/
+int lessonTwelve(void){
+  /** Integer data types **/
+  char myVarChar; // 8 bits; -128 to 127. mostly used to store letters
+  short myVarShort; // 16 bits; -32,768 to 32,767. hardly ever used, mostly in embedded programming
+  long myVarLong; // 32 bits; -2,147,483,648 to 2,147,483,647
+  long long myVarLongLong; // 64 bits; -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+  int myVarInt; // 32 bits; -2,147,483,648 to 2,147,483,647
+
+  /** Floating point types **/
+  float myFloat; //32 bits; -3.4x10^38 to 3.4*10^38; typically only used in mem saving situations
+  double myDouble; // 64 bits; -1.7x10^308 to 1.7x10^308
+
+  return 0;
+}
+
+/**
+* Unsigned
+* if programmer knows number will always be positive they can use unsigned
+* if var is unsigned it exchanges it's length, but keeps it bits worth (i.e. 16bits)
+*/
+int lessonThirteen(void){
+
+  unsigned char myVarChar;
+  unsigned short myVarShort;
+  unsigned long myVarLong;
+  unsigned long long myVarLongLong;
+  unsigned int myVarInt; // 0 to 4,294,967,297
+
   return 0;
 }
 
