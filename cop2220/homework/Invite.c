@@ -11,6 +11,8 @@
 int main(void){
   int packageOne = 50;
   int packageTwo = 200;
+  int numPackageOne;
+  int numPackageTwo;
 
   /** Vars from user input **/
   double pricePackageOne;
@@ -29,8 +31,9 @@ int main(void){
   if(fabs(fourPricePackageOne - pricePackageTwo) < 0.01){
     printf("diff is less than 0.001\n");
     // configuration is indifferent
+
   }else if(fourPricePackageOne > pricePackageTwo ){
-    // cheaper to go with a package two
+    // cheaper to go with package two
 
   }else if(fourPricePackageOne < pricePackageTwo ){
     // cheaper to go with package ones
