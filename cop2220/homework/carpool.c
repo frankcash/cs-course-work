@@ -8,6 +8,10 @@
 #include <stdio.h>
 #include <math.h>
 
+/**
+* Gets user input and then calculates total cost
+* total cost = ((total miles / miles per gallon ) * cost per gallon) + total parking fees + total tolls
+*/
 int main(void){
   double costGas;
   double totalCost;
@@ -31,8 +35,8 @@ int main(void){
   printf("Please enter toll fees per day (in dollars)\n");
   scanf("%lf", &tollsPerDay);
 
-  costGas = (totalMiles / milesPerGallon) * costGallon;
-  totalCost += costGas + parkingFees + tollsPerDay;
+  costGas = (totalMiles / milesPerGallon) * costGallon; // Calculates cost for gas
+  totalCost += costGas + parkingFees + tollsPerDay; // Calculates total cost
 
   printf("Total cost per day is: $%.2lf\n", totalCost);
   return 0;
