@@ -34,6 +34,6 @@ int main(void){
   costGas = (totalMiles / milesPerGallon) * costGallon;
   totalCost += costGas + parkingFees + tollsPerDay;
 
-  printf("total cost is %.2lf\n", totalCost);
+  printf("Total cost per day is: $%.2lf\n", totalCost);
   return 0;
 }
