@@ -33,7 +33,7 @@ int main(void){
     // configuration is indifferent
 
   }else if(fourPricePackageOne > pricePackageTwo ){
-    // cheaper to go with package two
+    // cheaper to go with a package two
 
   }else if(fourPricePackageOne < pricePackageTwo ){
     // cheaper to go with package ones
