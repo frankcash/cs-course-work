@@ -53,11 +53,43 @@ int lessonFour(void){
 
 	return 0;
 }
+/**
+* it is possible to have nested arrays
+*/
+int lessonNine(void){
+	int myArray[2][2];
+	myArray[0][0] = 3;
+	return 0;
+}
+
+/**
+* Char Arrays / C Strings
+*/
+int lessonTen(void){
+
+	printf("A string in C is just an array of Chars\n");
+	printf("The last char is always a null byte \0 \n");
+	printf("Thus, char foo[20] only has 19 usable spaces\n");
+
+	char userStr[20] = "1234567890123456789";
+	int i;
+
+	printf("Please enter an email: \n");
+	scanf("%s", userStr);
+	// look for '@'
+	for(i = 0; userStr[i] !='\0'; i++){
+		if(userStr[i] == '@'){
+			printf("found '@'.\n");
+		}
+	}
+	return 0;
+}
 
 int main(void){
 	// lessonOne();
 	// lessonTwo();
-	lessonFour();
+	// lessonFour();
+	lessonTen();
 
 	// printf("hello\n");
 	return 0;
