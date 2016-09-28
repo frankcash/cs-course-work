@@ -111,6 +111,11 @@ int computeRectangle(void){
 }
 
 
+/**
+* Controls the flow of the program.
+* Runs userInput to print program options.
+* Then runs the correct computation function.
+*/
 int main(void){
   initOutput();
 
