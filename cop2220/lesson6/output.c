@@ -89,6 +89,9 @@ void StrSpaceToHyphen(char* modString){
   return;
 }
 
+// example function Declaration AKA function prototype
+int myDeclaration(int foo, int bar);
+
 /**
 * Strings are automatically passed by pointer
 */
@@ -111,4 +114,9 @@ int main(void){
   // lessonNine();
   lessonEleven();
   return 0;
+}
+
+// example function definition
+int myDeclaration(int foo, int bar){
+  printf("foo: %d\nbar: %d\n", foo, bar);
 }
