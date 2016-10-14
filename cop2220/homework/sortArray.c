@@ -18,10 +18,16 @@ void inputData(double* array);
 int main(void){
   int arraySize = 6;
   double userArr[arraySize];
+  char userInput = 'y';
 
-  inputData(userArr);
-  sortArray(userArr, arraySize);
-  displayArray(userArr, arraySize);
+  while(userInput == 'y'){
+    inputData(userArr);
+    sortArray(userArr, arraySize);
+    displayArray(userArr, arraySize);
+    printf("Would you like to do another calculation? (y/n)\n");
+    scanf(" %c", &userInput);
+  }
+
   return 0;
 }
 
