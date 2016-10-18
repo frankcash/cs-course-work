@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * Struct to store hours and charges
+ */
 typedef struct parkingCharge_struct{
 	double hours;
 	double charge;
 } parkingCharge;
 
-void populateHours(parkingCharge* carsArrToPopulate, int size); // function declaration
-void populateCharges(parkingCharge* carsArrToPopulate, int size); // function declaration
+void populateHours(parkingCharge* carsArrToPopulate, int size);
+void calculateCharges(parkingCharge* carsArrToPopulate, int size);
+void printCharges(parkingCharge* carArrsToPrint, int size);
 
 int main(void){
 	int numCars = 0;
@@ -19,8 +23,10 @@ int main(void){
 	carsArr = (parkingCharge*) malloc(numCars * sizeof(parkingCharge));
 	printf("Number of cars %d\n", numCars);
 	populateHours(carsArr, numCars);
+	calculateCharges(carsArr, numCars);
 
 	printf("%lf", carsArr[0].hours);
+	printf("%lf", carsArr[0].charge);
 	return 0;
 }
 
@@ -42,8 +48,19 @@ void populateHours(parkingCharge* carsArrToPopulate, int size){
 /*
  * Takes an array of parking charges with amount of hours and populates charge
  */
-void populateCharges(parkingCharge* carsArrToPopulate, int size){
+void calculateCharges(parkingCharge* carsArrToPopulate, int size){
 	int i = 0;
+	for(i = 0; i < size; i++){
+
+		if(carsArrToPopulate[i].hours <= 3){
+			carsArrToPopulate[i].charge = 2.00;
+		}else{
+			carsArrToPopulate[i].charge =  ((carsArrToPopulate[i].hours - 3) * 0.5) + 2.00;
+			if(carsArrToPopulate[i].charge > 10){
+				carsArrToPopulate[i].charge = 10.00;
+			}
+		}	
+	}
 
 	return;
 }
