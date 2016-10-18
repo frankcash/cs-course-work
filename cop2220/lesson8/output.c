@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
 * Pointers are pass by reference
@@ -76,12 +77,60 @@ void lessonFour(void){
   return;
 }
 
+/**
+* Some nice string functions use pointers
+*/
+void lessonFive(void){
+  char string1[10] = "abcxyz";
+  char string2[10] = "xyz";
+  char newText[10] = "";
+
+  if(strcmp(&string1[3], "xyz") == 0){
+    printf("xyz equals xyz");
+  }
+
+  char* subStr = NULL;
+  subStr = &string1[3]; // pointer now gets the pointer for position of x in string 1
+  if(strcmp(subStr, string2) == 0){
+    printf("xyz equals xyz");
+  }
+  return;
+}
+
+/**
+* One could use malloc to dynamically allocate memory for an array
+*/
+void lessonSix(void){
+
+  char* myStr = NULL;
+  myStr = (char*) malloc(10 * sizeof(char));
+  myStr[0] = 'f';
+  printf("%c\n", myStr[0]);
+
+  return;
+}
+
+/**
+* realloc is useful to change an original pointer's block to a newly specified size one
+*/
+void lessonSeven(void){
+  int* f = NULL;
+
+  f = (int*) malloc(10 * sizeof(int));
+  f[9] = 10;
+  f = realloc(f, (2*sizeof(int)));
+  f[1] = 2;
+  return;
+}
+
 int main(void){
   // char f = 'f';
   // char d = 'f';
   // lessonOne(f, &d);
   // lessonTwo();
   // lessonThree();
-  lessonFour();
+  // lessonFour();
+  // lessonSix();
+  lessonSeven();
   return 0;
 }
