@@ -24,9 +24,8 @@ int main(void){
 	printf("Number of cars %d\n", numCars);
 	populateHours(carsArr, numCars);
 	calculateCharges(carsArr, numCars);
+	printCharges(carsArr, numCars);
 
-	printf("%lf", carsArr[0].hours);
-	printf("%lf", carsArr[0].charge);
 	return 0;
 }
 
@@ -61,6 +60,27 @@ void calculateCharges(parkingCharge* carsArrToPopulate, int size){
 			}
 		}	
 	}
+
+	return;
+}
+
+/*
+ * Takes an array of parking charges and prints hours and charge in tab output
+ */
+void printCharges(parkingCharge* carArrsToPrint, int size){
+	int i = 0;
+	double totalHours = 0.0;
+	double totalCharge = 0.0;
+
+	printf("Car\tHours\tCharge\t\n");
+	for(i = 0; i < size; i++){
+		printf("%d\t%.2lf\t%.2lf\n", (i+1), carArrsToPrint[i].hours, carArrsToPrint[i].charge);
+		totalHours += carArrsToPrint[i].hours;
+		totalCharge += carArrsToPrint[i].charge;
+	}
+
+
+	printf("Total\t%.2lf\t%.2lf\n", totalHours, totalCharge);
 
 	return;
 }
