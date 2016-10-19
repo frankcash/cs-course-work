@@ -9,13 +9,14 @@ typedef struct parkingCharge_struct{
 	double charge;
 } parkingCharge;
 
-void populateHours(parkingCharge* carsArrToPopulate, int size);
-void calculateCharges(parkingCharge* carsArrToPopulate, int size);
-void printCharges(parkingCharge* carArrsToPrint, int size);
+void populateHours(parkingCharge* carsArrToPopulate, int size); // gets user input for hours
+void calculateCharges(parkingCharge* carsArrToPopulate, int size); // takes hours and calculates charges
+void printCharges(parkingCharge* carArrsToPrint, int size); // prints tabulated output
 
 int main(void){
 	int numCars = 0;
 	parkingCharge* carsArr = NULL;
+	char repeat = 'n';
 
 	printf("Please enter the number of vehicles:\n");
 	scanf("%d", &numCars);
@@ -25,6 +26,22 @@ int main(void){
 	populateHours(carsArr, numCars);
 	calculateCharges(carsArr, numCars);
 	printCharges(carsArr, numCars);
+
+	printf("Would you like to do another calculation?\n");
+	scanf("%c", &repeat);
+	while(repeat == 'y' || repeat == 'Y'){
+		printf("Please enter the number of vehicles:\n");
+		scanf("%d", &numCars);
+		carsArr = (parkingCharge*) realloc(carsArr, (numCars * sizeof(parkingCharge)));
+		populateHours(carsArr, numCars);
+		calculateCharges(carsArr, numCars);
+		printCharges(carsArr, numCars);
+		
+		printf("Would you like to do another calculation?\n");
+		scanf("%c", &repeat);
+	}
+
+	free(carsArr);
 
 	return 0;
 }
@@ -78,7 +95,6 @@ void printCharges(parkingCharge* carArrsToPrint, int size){
 		totalHours += carArrsToPrint[i].hours;
 		totalCharge += carArrsToPrint[i].charge;
 	}
-
 
 	printf("Total\t%.2lf\t%.2lf\n", totalHours, totalCharge);
 
