@@ -1,3 +1,11 @@
+/**
+*	 Name: Charles Cash
+* Date: October 19, 2016
+* Class: COP 2220
+* Assignment: Parking Charges
+* Compiled with GCC on Arch Linux
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,7 +28,7 @@ int main(void){
 
 	printf("Please enter the number of vehicles:\n");
 	scanf("%d", &numCars);
-	
+
 	carsArr = (parkingCharge*) malloc(numCars * sizeof(parkingCharge));
 	printf("Number of cars %d\n", numCars);
 	populateHours(carsArr, numCars);
@@ -56,7 +64,7 @@ void populateHours(parkingCharge* carsArrToPopulate, int size){
 
 		printf("Enter hours:\n");
 		scanf("%lf", &temp);
-		carsArrToPopulate[i].hours = temp; 
+		carsArrToPopulate[i].hours = temp;
 	}
 	return;
 }
@@ -75,7 +83,7 @@ void calculateCharges(parkingCharge* carsArrToPopulate, int size){
 			if(carsArrToPopulate[i].charge > 10){
 				carsArrToPopulate[i].charge = 10.00;
 			}
-		}	
+		}
 	}
 
 	return;
