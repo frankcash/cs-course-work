@@ -21,6 +21,11 @@ void populateHours(parkingCharge* carsArrToPopulate, int size); // gets user inp
 void calculateCharges(parkingCharge* carsArrToPopulate, int size); // takes hours and calculates charges
 void printCharges(parkingCharge* carArrsToPrint, int size); // prints tabulated output
 
+
+/**
+* Runs through initial calculation and then goes into a loop based upon user inputData
+* Designed this way so malloc would run on initial invocation and then use realloc
+*/
 int main(void){
 	int numCars = 0;
 	parkingCharge* carsArr = NULL;
@@ -35,8 +40,8 @@ int main(void){
 	calculateCharges(carsArr, numCars);
 	printCharges(carsArr, numCars);
 
-	printf("Would you like to do another calculation?\n");
-	scanf("%c", &repeat);
+	printf("Would you like to do another calculation? (y/n)\n");
+	scanf(" %c", &repeat);
 	while(repeat == 'y' || repeat == 'Y'){
 		printf("Please enter the number of vehicles:\n");
 		scanf("%d", &numCars);
@@ -44,9 +49,9 @@ int main(void){
 		populateHours(carsArr, numCars);
 		calculateCharges(carsArr, numCars);
 		printCharges(carsArr, numCars);
-		
-		printf("Would you like to do another calculation?\n");
-		scanf("%c", &repeat);
+
+		printf("Would you like to do another calculation? (y/n)\n");
+		scanf(" %c", &repeat);
 	}
 
 	free(carsArr);
