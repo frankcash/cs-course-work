@@ -109,7 +109,7 @@ void printCharges(parkingCharge* carArrsToPrint, int size){
 		totalCharge += carArrsToPrint[i].charge;
 	}
 
-	printf("Total\t%.2lf\t%.2lf\n", totalHours, totalCharge);
+	printf("Total\t%.1lf\t%.2lf\n", totalHours, totalCharge);
 
 	return;
 }
