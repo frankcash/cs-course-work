@@ -1,6 +1,6 @@
 /**
 *	 Name: Charles Cash
-* Date: October 19, 2016
+* Date: October 26, 2016
 * Class: COP 2220
 * Assignment: Parking Charges
 * Compiled with GCC on Arch Linux
