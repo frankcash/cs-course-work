@@ -123,6 +123,22 @@ void lessonSeven(void){
   return;
 }
 
+void testExample(void){
+  double value[10];
+  int i = 0;
+  double total = 0.0;
+  for(i = 0; i < 10; i++){
+    printf("Please enter a value:\n");
+    scanf("%lf", &value[i]);
+    total += value[i];
+  }
+  printf("%lf\n", total);
+  int x[4] = {3, 6, 9, 5};
+
+  x[2] -= x[1] % x[3];
+  printf("%d", x[2]);
+}
+
 int main(void){
   // char f = 'f';
   // char d = 'f';
@@ -131,6 +147,7 @@ int main(void){
   // lessonThree();
   // lessonFour();
   // lessonSix();
-  lessonSeven();
+  // lessonSeven();
+  testExample();
   return 0;
 }
