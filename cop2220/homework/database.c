@@ -39,6 +39,7 @@ typedef struct Artist_type_node_struct{
 	*/
 void listOptions(); // prints the CD options
 int stockNewCD(int numArtists, artistTypeNode* artistArr);
+void printAllCds(int numArtists, artistTypeNode* artistArr); // Prints all of an artists information
 
 int main(void){
 	int numArtists = 0; // Array to track number of artists
@@ -49,10 +50,10 @@ int main(void){
 	scanf("%d", &option);
 	switch(option){
 		case 1:
-			numArtists = numArtists + tockNewCD(numArtists, artistArr);
+			numArtists = numArtists + stockNewCD(numArtists, artistArr);
 			break;
 		case 2:
-		 	// TODO: Print details of an artist
+      printAllCds(numArtists, artistArr);
 			break;
 		case 3:
 		 	// TODO: Search for CD
@@ -61,15 +62,45 @@ int main(void){
 		  // TODO: Sell CD
 			break;
 		case 5:
-			// TODO: Do nothing
+			//Do nothing
 			break;
+    default:
+      break;
 	}
 
-	printf("main: %d\n", artistArr[0].cdRoot->number);
+  while(option != 5){
+    listOptions();
+    scanf("%d", &option);
+    switch(option){
+  		case 1:
+  			numArtists = numArtists + stockNewCD(numArtists, artistArr);
+  			break;
+  		case 2:
+  		 	printAllCds(numArtists, artistArr);
+  			break;
+  		case 3:
+  		 	// TODO: Search for CD
+  			break;
+  		case 4:
+  		  // TODO: Sell CD
+  			break;
+  		case 5:
+  			//Do nothing
+  			break;
+      default:
+        break;
+  	}
+  }
+
+	// printf("main: %d\n", artistArr[0].cdRoot->number);
 
   return 0;
 }
 
+/**
+* Lists all operations a user can do
+*
+*/
 void listOptions(){
 	printf("Please select one of the following options:\n");
 	printf("1) Stock a new CD\n");
@@ -82,6 +113,11 @@ void listOptions(){
 }
 
 
+/**
+* Adds a New CD
+* If no user exists creates a user and a CD
+* If user exists will add CD to that user
+*/
 int stockNewCD(int numArtists, artistTypeNode* artistArr){
 	char name[20];
 	char title[20];
@@ -102,7 +138,7 @@ int stockNewCD(int numArtists, artistTypeNode* artistArr){
 	if(numArtists <= 0){
 		// Adds artist and CD
 		cdTypeNode* root = NULL;
-		root = malloc(sizeof(cdTypeNode));
+		root = (cdTypeNode*) malloc(sizeof(cdTypeNode));
 		printf("%s\n", name);
 		strcpy(artistArr[numArtists].name , name);
 		artistArr[numArtists].cdRoot = root;
@@ -112,17 +148,43 @@ int stockNewCD(int numArtists, artistTypeNode* artistArr){
 		root->number = cdNumber;
 		strcpy(root->title, title);
 		root->count = stock;
+    root->next = NULL;
     returnAmount = 1;
 	}else{
     int i = 0;
-    for(i = 0; i < numArtists; i++){
-      if(artistArr[i].name == name){
-         // TODO: add CD
+    for(i = 0; i < numArtists + 1; i++){
+      // Loops through artists to find if they exist
+      if(strcmp(artistArr[i].name, name) == 0){
+         // TODO: If they exist add CD
+         cdTypeNode* node = NULL;
+         cdTypeNode* temp = NULL;
+         node = (cdTypeNode*) malloc(sizeof(cdTypeNode));
+         temp = (cdTypeNode*) malloc(sizeof(cdTypeNode));
+         node = artistArr[i].cdRoot; // gets root
+
+
+         while(node->next != NULL){ // whole ther is a next node
+           temp = node->next;
+           node = (cdTypeNode*) realloc(node, sizeof(cdTypeNode));
+           node = &temp;
+
+           temp = (cdTypeNode*) realloc(temp, sizeof(cdTypeNode));
+         }
+         temp->next = NULL;
+         temp->number = cdNumber;
+         strcpy(temp->title, title);
+         temp->count = stock;
+         node->next = temp;
+
+
+         printf(" final node title: %s \n", node->title);
+        //  printf("Node title: %s\n", node->title);
+         //TODO: Finish
       }else{
         // Create a new artist
         // Adds artist and CD
         cdTypeNode* root = NULL;
-        root = malloc(sizeof(cdTypeNode));
+        root = (cdTypeNode*) malloc(sizeof(cdTypeNode));
         printf("%s\n", name);
         strcpy(artistArr[numArtists].name , name);
         artistArr[numArtists].cdRoot = root;
@@ -132,6 +194,7 @@ int stockNewCD(int numArtists, artistTypeNode* artistArr){
         root->number = cdNumber;
         strcpy(root->title, title);
         root->count = stock;
+        root->next = NULL;
         returnAmount = 1;
       }
     }
@@ -139,4 +202,40 @@ int stockNewCD(int numArtists, artistTypeNode* artistArr){
 
 
 	return returnAmount;
+}
+
+
+void printAllCds(int numArtists, artistTypeNode* artistArr){
+  char artist[20];
+  printf("Which artist to find?\n");
+  scanf(" %s", artist);
+
+  int i = 0;
+  for(i = 0; i< numArtists + 1; i++){
+    if(strcmp(artistArr[i].name, artist) == 0){
+      printf("Artist name: %s\n", artistArr[i].name);
+      // TODO: testing on how to loop through
+      cdTypeNode* node = NULL;
+      cdTypeNode* temp = NULL;
+      node = (cdTypeNode*) malloc(sizeof(cdTypeNode));
+      temp = (cdTypeNode*) malloc(sizeof(cdTypeNode));
+      node = artistArr[i].cdRoot;
+
+      printf("CD Title for: %s\n", node->title);
+
+      while(node->next != NULL){
+        temp = node->next;
+        node = (cdTypeNode*) realloc(node, sizeof(cdTypeNode));
+        node = temp;
+
+        printf("CD Title while: %s\n", node->title);
+
+        temp = (cdTypeNode*) realloc(temp, sizeof(cdTypeNode));
+      }
+
+
+    }
+
+  }
+
 }
