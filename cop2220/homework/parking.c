@@ -1,10 +1,10 @@
 /**
-*	 Name: Charles Cash
-* Date: October 26, 2016
-* Class: COP 2220
-* Assignment: Parking Charges
-* Compiled with GCC on Arch Linux
-*/
+ *	Name: Charles Cash
+ * Date: October 26, 2016
+ * Class: COP 2220
+ * Assignment: Parking Charges
+ * Compiled with GCC on Arch Linux
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,9 +23,9 @@ void printCharges(parkingCharge* carArrsToPrint, int size); // prints tabulated 
 
 
 /**
-* Runs through initial calculation and then goes into a loop based upon user inputData
-* Designed this way so malloc would run on initial invocation and then use realloc
-*/
+ * Runs through initial calculation and then goes into a loop based upon user inputData
+ * Designed this way so malloc would run on initial invocation and then use realloc
+ */
 int main(void){
 	int numCars = 0;
 	parkingCharge* carsArr = NULL;
